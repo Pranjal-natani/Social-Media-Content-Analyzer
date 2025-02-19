@@ -27,6 +27,7 @@ export default function Home() {
       setText(response.data.text);
       setHashtags(null); 
     } catch (error) {
+      console.error(error); // ✅ Fix: Log the error
       alert("Error extracting text!");
     }
   };
@@ -37,6 +38,7 @@ export default function Home() {
       const response = await axios.post("http://localhost:5000/analyze/readability", { text });
       setReadability(response.data.readability);
     } catch (error) {
+      console.error(error); // ✅ Fix: Log the error
       alert("Error analyzing readability!");
     }
   };
@@ -47,6 +49,7 @@ export default function Home() {
       const response = await axios.post("http://localhost:5000/analyze/sentiment", { text });
       setSentiment(response.data.sentiment);
     } catch (error) {
+      console.error(error); // ✅ Fix: Log the error
       alert("Error analyzing sentiment!");
     }
   };
@@ -67,6 +70,7 @@ export default function Home() {
       const data = await response.json();
       setHashtags(data.hashtags.length > 0 ? data.hashtags : []); 
     } catch (error) {
+      console.error(error); // ✅ Fix: Log the error
       setHashtags([]);
     }
   };
