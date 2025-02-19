@@ -21,7 +21,7 @@ export default function Home() {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/upload/${type}`,
+        `https://social-media-content-analyzer-eqvw.onrender.com/upload/${type}`,
         formData
       );
       setText(response.data.text);
@@ -35,7 +35,7 @@ export default function Home() {
   const analyzeReadability = async () => {
     if (!text) return alert("No text to analyze!");
     try {
-      const response = await axios.post("http://localhost:5000/analyze/readability", { text });
+      const response = await axios.post("https://social-media-content-analyzer-eqvw.onrender.com/analyze/readability", { text });
       setReadability(response.data.readability);
     } catch (error) {
       console.error(error); 
@@ -46,7 +46,7 @@ export default function Home() {
   const analyzeSentiment = async () => {
     if (!text) return alert("No text to analyze!");
     try {
-      const response = await axios.post("http://localhost:5000/analyze/sentiment", { text });
+      const response = await axios.post("https://social-media-content-analyzer-eqvw.onrender.com/analyze/sentiment", { text });
       setSentiment(response.data.sentiment);
     } catch (error) {
       console.error(error); 
@@ -61,7 +61,7 @@ export default function Home() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/analyze/hashtags", {
+      const response = await fetch("https://social-media-content-analyzer-eqvw.onrender.com/analyze/hashtags", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text }),
